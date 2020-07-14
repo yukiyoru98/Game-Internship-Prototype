@@ -1,0 +1,25 @@
+3                                           //對話出現的角色人數 n，表示接下來連續n行都是角色的在Resources/Character/中的檔案夾名稱
+CharacterSample01,球球                      //角色檔案夾名稱, 預設顯示名稱
+CharacterSample02,貝貝
+CharacterSample03,米米
+#bg_sample01                                //設定背景
+$0>CharacterSample01                        //設定左邊角色為CharacterSample01的角色
+$1>CharacterSample02                        //設定右邊角色為CharacterSample02的角色
+@CharacterSample01>0                        //設定CharacterSample01之立繪
+@CharacterSample02>0                        //設定CharacterSample02之立繪
+CharacterSample01:???:哈囉哈囉哈囉哈囉       //說話者位置ID(立繪亮，其他人暗，空白為無人) : 顯示名稱(若有說話者可空白，使用預設) : 內容
+-                                           //清空文字
+@CharacterSample01>1
+CharacterSample02::嗨嗨嗨嗨嗨嗨嗨
+@CharacterSample01>1
+:LIN:第一句第一句第一句第一句第一句第一句第一句第一句第一句第一句第一句第一句第一句
+$0>-                                        //設定左邊角色為無
+::第二句第一句第一句第一句第一句第一句第一句第一句第一句
+#bg_sample02                                //設定背景
+-
+$1>CharacterSample03
+@CharacterSample03>0
+CharacterSample03:SAM:你好你好你好你好你好你好你好你好你好你好你好你好
+$0>CharacterSample02
+@CharacterSample02>0
+CharacterSample02::858585
