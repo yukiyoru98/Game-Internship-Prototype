@@ -55,6 +55,7 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
         if (sentenceID >= storyLines.Length)
         { //end dialogue
             Debug.Log("End Dialogue");
+            LoadingScenes.self.ChangeScene(Tags.MAIN_SCENE);
         }
         else if (storyLines[sentenceID][0] == '#')
         { //set background
