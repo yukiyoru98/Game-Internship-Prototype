@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Tags
 {
+
+    //FilePath and Names
     public const string CHARACTERS_PATH = "Characters/";
     public const string BG_PATH = "Backgrounds/";
+    public const string CHAPTER_PATH = "Stories/Titles";
 
     //Scene name
     public const string MAIN_SCENE = "Main";

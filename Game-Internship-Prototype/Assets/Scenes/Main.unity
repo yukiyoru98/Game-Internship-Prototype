@@ -376,7 +376,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 70
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -669,9 +669,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -863,8 +863,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06aa9ce44755cd34d8f61d84297475fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoryBtn: {fileID: 0}
-  JobBtn: {fileID: 0}
+  StoryBtn: {fileID: 1435486577}
+  JobBtn: {fileID: 1368987607}
+  ProgressBar: {fileID: 362126205}
+  MoneyText: {fileID: 1078745267}
+  ProgressText: {fileID: 199174729}
+  ChapterText: {fileID: 1759846477}
+  TitleText: {fileID: 1608201291}
+  TitlesFile: {fileID: 4900000, guid: b7faa937661f55747baca97b9969b515, type: 3}
 --- !u!1 &575229081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,6 +1372,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207036754}
   m_CullTransparentMesh: 0
+--- !u!1 &1221699340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221699343}
+  - component: {fileID: 1221699341}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1221699341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221699340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649e0bfb6447d45478a5671be72b796e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    Name: "\u83EF\u5B89"
+    Money: 0
+    Chapter: 2
+    Progress: 75
+--- !u!4 &1221699343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221699340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286342247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1847,7 @@ GameObject:
   - component: {fileID: 1608201292}
   - component: {fileID: 1608201291}
   m_Layer: 5
-  m_Name: ChapterTitle
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2235,6 +2289,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930906612}
   m_CullTransparentMesh: 0
+--- !u!1 &2085360016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085360018}
+  - component: {fileID: 2085360017}
+  m_Layer: 0
+  m_Name: NeverDestroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2085360017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085360016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3fb9c38c0e3e5458089301feb2cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NeverDestroyObj:
+  - {fileID: 1221699340}
+--- !u!4 &2085360018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085360016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119349982
 GameObject:
   m_ObjectHideFlags: 0
