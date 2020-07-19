@@ -9,6 +9,7 @@ public class Tags
     public const string CHARACTERS_PATH = "Characters/";
     public const string BG_PATH = "Backgrounds/";
     public const string CHAPTER_PATH = "Stories/Titles";
+    public const string CUSTOMER_PREFAB = "Prefabs/Customer";
 
     //Scene name
     public const string MAIN_SCENE = "Main";

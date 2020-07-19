@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryScene.unity
     guid: 7ac7373051c3c09498593a22d8b868a6
+  - enabled: 1
+    path: Assets/Scenes/JobScene.unity
+    guid: 5f90c06f4221d594c875e93170dcb9e4
   m_configObjects: {}

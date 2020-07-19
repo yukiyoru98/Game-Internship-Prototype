@@ -13,6 +13,7 @@ public class PlayerCtrl : MonoBehaviour
     public Sprite[] sprites;
     private Vector3 OriginalPosition;
     private float Speed = 0.2f;
+    public GameObject TargetCustomer;
 
     private void Start() {
         PlayerSprite = GetComponent<SpriteRenderer>();
@@ -20,15 +21,17 @@ public class PlayerCtrl : MonoBehaviour
         OriginalPosition = transform.position;
     }
 
-    public void Move(Vector3 target){ //move towards customer
-        // Debug.Log("Move to target");
-        transform.DOMove(target, Speed).SetEase(Ease.Linear).OnComplete(Attack);
+    public void Move(GameObject target){ //move towards customer
+        // Debug.Log("Move to target: " + target);
+        TargetCustomer = target;
+        transform.DOMove(TargetCustomer.transform.position, Speed).SetEase(Ease.Linear).OnComplete(Attack);
     }
 
     public void Attack(){
         PlayerSprite.sprite = sprites[1];
         Invoke("AttackEnd", 0.5f);
-        StartCoroutine(CustomerCtrl.self.Fall());
+        // StartCoroutine(CustomerCtrl.self.Fall());
+        StartCoroutine(TargetCustomer.GetComponent<CustomerCtrl>().Fall());
     }
 
     void AttackEnd(){
