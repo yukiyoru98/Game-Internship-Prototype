@@ -10,6 +10,7 @@ public class Tags
     public const string BG_PATH = "Backgrounds/";
     public const string CHAPTER_PATH = "Stories/Titles";
     public const string CUSTOMER_PREFAB = "Prefabs/Customer";
+    public const string STORY_FILE_PREFIX = "Stories/ch";
 
     //Scene name
     public const string MAIN_SCENE = "Main";

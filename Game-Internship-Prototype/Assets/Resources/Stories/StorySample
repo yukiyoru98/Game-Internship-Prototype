@@ -1,5 +1,5 @@
 3                                           //對話出現的角色人數 n，表示接下來連續n行都是角色的在Resources/Character/中的檔案夾名稱
-CharacterSample01,球球                      //角色檔案夾名稱, 預設顯示名稱
+CharacterSample01,***                      //角色檔案夾名稱:預設顯示名稱(***代表使用玩家名稱)
 CharacterSample02,貝貝
 CharacterSample03,米米
 #bg_sample01                                //設定背景

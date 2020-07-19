@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class MainUICtrl : MonoBehaviour
+public class TopBarCtrl : MonoBehaviour
 {
-    public Button StoryBtn, JobBtn; //GuideBtn, EventBtn;
+    public static TopBarCtrl self;
     public Slider ProgressBar;
     public Text MoneyText, ProgressText, ChapterText, TitleText;
     [SerializeField]
@@ -16,6 +15,7 @@ public class MainUICtrl : MonoBehaviour
 
     private void Awake()
     {
+        self = this;
         if (TitlesFile)
         {
             string[] tmp = TitlesFile.text.Split('\n');
@@ -28,6 +28,18 @@ public class MainUICtrl : MonoBehaviour
         }
     }
 
+    private void OnEnable() {
+        DataManager.OnSetMoneyEvent += SetMoney;
+        DataManager.OnSetProgressEvent += SetProgress;
+        DataManager.OnSetChapterEvent += SetChapter;
+    }
+
+    private void OnDisable() {
+        DataManager.OnSetMoneyEvent -= SetMoney;
+        DataManager.OnSetProgressEvent -= SetProgress;
+        DataManager.OnSetChapterEvent -= SetChapter;
+    }
+    
     private void Start()
     {
         SetChapter();
@@ -35,23 +47,14 @@ public class MainUICtrl : MonoBehaviour
         SetMoney();
     }
 
-    public void ClickStoryBtn()
-    {
-        LoadingScenes.self.ChangeScene(Tags.STORY_SCENE);
-    }
-
-    public void ClickJobBtn()
-    {
-        LoadingScenes.self.ChangeScene(Tags.JOB_SCENE);
-    }
-
     public void SetMoney()
     {
+        // Debug.Log("Money UI updated");
         MoneyText.text = DataManager.self.data.Money.ToString();
     }
-
     public void SetProgress()
     {
+        Debug.Log("Progress UI updated");
         int value = DataManager.self.data.Progress;
         ProgressText.text = value.ToString() + ProgressTextSuffix;
         ProgressBar.value = value;
@@ -59,8 +62,8 @@ public class MainUICtrl : MonoBehaviour
 
     public void SetChapter()
     {
+        Debug.Log("Chapter UI updated");
         ChapterText.text = Titles[DataManager.self.data.Chapter][0];
         TitleText.text = Titles[DataManager.self.data.Chapter][1];
     }
-
 }

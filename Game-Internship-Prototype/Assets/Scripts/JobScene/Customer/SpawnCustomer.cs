@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnCustomer : MonoBehaviour
 {
+    public static SpawnCustomer self;
     public Vector2 XPos;
     public Vector2 YRange;
     public float SpawnCD;
@@ -13,6 +14,10 @@ public class SpawnCustomer : MonoBehaviour
     public int numberToSpawn = 4;
     private int CurrentCount = 0;
     public int MaxCount = 10;
+
+    private void Awake() {
+        self = this;
+    }
 
     private void Start()
     {
@@ -32,9 +37,9 @@ public class SpawnCustomer : MonoBehaviour
                 float y = Random.Range(YRange.x, YRange.y); //random select Y position
                 obj.transform.position = new Vector3(x, y, y);
 
-                CurrentCount++;
+                AddCustomer(1);
 
-                if (CurrentCount == MaxCount)
+                if (CurrentCount == MaxCount) //stop spawning if reach maximum # of customers
                 {
                     CanSpawn = false;
                     break;
@@ -47,5 +52,10 @@ public class SpawnCustomer : MonoBehaviour
         {
             CanSpawn = true;
         }
+    }
+
+    public void AddCustomer(int i){
+        CurrentCount += i;
+
     }
 }

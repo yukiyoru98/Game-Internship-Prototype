@@ -1,5 +1,5 @@
 3
-CharacterSample01,球球
+CharacterSample01,***
 CharacterSample02,貝貝
 CharacterSample03,米米
 #bg_sample01
@@ -7,7 +7,7 @@ $0>CharacterSample01
 $1>CharacterSample02
 @CharacterSample01>0
 @CharacterSample02>0
-CharacterSample01:???:哈囉哈囉哈囉哈囉
+CharacterSample01::哈囉哈囉哈囉哈囉
 -
 @CharacterSample01>1
 CharacterSample02::嗨嗨嗨嗨嗨嗨嗨

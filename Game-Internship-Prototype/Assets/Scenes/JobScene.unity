@@ -153,6 +153,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 5712414315059725111, guid: 115ff91a5dc1d534da1746e3b5721f6b, type: 3}
   - {fileID: 2277041772830266462, guid: 115ff91a5dc1d534da1746e3b5721f6b, type: 3}
+  TargetCustomer: {fileID: 0}
 --- !u!212 &214384838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -933,10 +934,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 969405272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8feba6c2191db48a228ecd8c94d6d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9df0420372d09e443b64c4e697e5ee83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HomeBtn: {fileID: 0}
+  HomeBtn: {fileID: 1775564346}
 --- !u!114 &969405274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,7 +1667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XPos: {x: -3.6, y: 3.6}
   YRange: {x: -2, y: 2}
-  SpawnCD: 3
+  SpawnCD: 15
   MaxSpawnCD: 0
   CanSpawn: 1
   numberToSpawn: 4
@@ -1753,8 +1754,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ClickStoryBtn
+      - m_Target: {fileID: 969405273}
+        m_MethodName: ClickHomeBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1897,9 +1898,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2252,6 +2253,7 @@ GameObject:
   - component: {fileID: 2136378820}
   - component: {fileID: 2136378822}
   - component: {fileID: 2136378821}
+  - component: {fileID: 2136378823}
   m_Layer: 5
   m_Name: TopBar
   m_TagString: Untagged
@@ -2317,3 +2319,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136378819}
   m_CullTransparentMesh: 0
+--- !u!114 &2136378823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136378819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6191b895a5df41d44920f8b60953dfbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 1804581787}
+  MoneyText: {fileID: 609878510}
+  ProgressText: {fileID: 638648798}
+  ChapterText: {fileID: 2130293614}
+  TitleText: {fileID: 692022219}
+  TitlesFile: {fileID: 4900000, guid: b7faa937661f55747baca97b9969b515, type: 3}

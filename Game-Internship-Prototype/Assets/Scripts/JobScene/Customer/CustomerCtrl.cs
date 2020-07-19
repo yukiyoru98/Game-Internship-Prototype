@@ -22,6 +22,8 @@ public class CustomerCtrl : MonoBehaviour
     private bool isHit = false;
     private float WakeUpCD = 2f;
     private float MinDistance = 0.8f;
+    [SerializeField]
+    private int money;
 
 
     private void Start()
@@ -86,8 +88,10 @@ public class CustomerCtrl : MonoBehaviour
         { //second click
             //player pull customer back
             //temp: just disappear
+            CancelInvoke();
             Destroy(gameObject);
-            //TODO:add money
+            DataManager.self.AddMoney(money);
+            SpawnCustomer.self.AddCustomer(-1);
         }
 
     }
@@ -95,7 +99,7 @@ public class CustomerCtrl : MonoBehaviour
     public IEnumerator Fall()
     {
         CustomerSprite.sprite = sprites[1];
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         isHit = true; //isHit = hit = true
         CustomerSprite.sprite = sprites[2];
 

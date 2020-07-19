@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c6b9b7ae1ef8d3d4cbcc176c08da9c72, type: 3}
   MoveCD: 3
   CanMove: 0
+  money: 10
 --- !u!61 &6579762393627498346
 BoxCollider2D:
   m_ObjectHideFlags: 0

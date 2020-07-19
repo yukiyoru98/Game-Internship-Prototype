@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JobUICtrl : MonoBehaviour
+public class JobCtrl : MonoBehaviour
 {
     public Button HomeBtn; //, CouponBtn, AutoBtn;
 

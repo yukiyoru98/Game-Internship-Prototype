@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
     public TextAsset storyFile;
     public Text NameText;
     public Text DialogueText;
-    public GameObject BackgroundObj;
+    public GameObject BackgroundObj, ClickObj;
     [SerializeField]
     private string[] storyLines;
     public Dictionary<string, PortraitInfo> PortraitInfoDict = new Dictionary<string, PortraitInfo>();
@@ -19,35 +19,49 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
     [SerializeField]
     private float printSpeed;
 
-    private void Awake()
-    {
-        ReadStoryFile();
-    }
-
     private void Start()
     {
-        Next();
+        if (ReadStoryFile())
+        {
+            ClickObj.SetActive(true);
+            Next();
+        }
     }
 
-    void ReadStoryFile()
+    bool ReadStoryFile()
     {
-        if (storyFile)
+        storyFile = Resources.Load<TextAsset>(Tags.STORY_FILE_PREFIX + DataManager.self.data.Chapter.ToString());
+        if (!storyFile)
         {
-            storyLines = storyFile.text.Split('\n');
-            int n = int.Parse(storyLines[0]); //how many characters in this dialogue
-            for (int i = 0; i < n; i++)
-            { //get the name of characters
-                string[] tmp = (storyLines[i + 1].Remove(storyLines[i + 1].Length - 1)).Split(',');
-                PortraitInfo info = new PortraitInfo();
-                info.positionID = -1; //initially not on display
-                info.Name = tmp[1];
-                PortraitInfoDict.Add(tmp[0], info);
-            }
-            // foreach (var x in PortraitInfoDict){
-            //     Debug.Log(x.Key + " " +　x.Value.Name);
-            // }
-            sentenceID = n + 1;
+            Debug.LogError("Failed to load story");
+            return false;
         }
+        // Debug.Log("Load Story " + storyFile.name);
+
+        storyLines = storyFile.text.Split('\n');
+        int n = int.Parse(storyLines[0]); //how many characters in this dialogue
+        for (int i = 0; i < n; i++)
+        { //get the information of characters
+            string[] tmp = (storyLines[i + 1].Remove(storyLines[i + 1].Length - 1)).Split(','); //potrait folder name:display name
+            PortraitInfo info = new PortraitInfo();
+            info.positionID = -1; //initially not on display
+
+            if (tmp[1] == "***")
+            {
+                info.Name = DataManager.self.data.Name;
+            }
+            else
+            {
+                info.Name = tmp[1];
+            }
+
+            PortraitInfoDict.Add(tmp[0], info);
+        }
+        // foreach (var x in PortraitInfoDict){
+        //     Debug.Log(x.Key + " " +　x.Value.Name);
+        // }
+        sentenceID = n + 1;
+        return true;
     }
 
     public void Next()
@@ -55,6 +69,9 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
         if (sentenceID >= storyLines.Length)
         { //end dialogue
             Debug.Log("End Dialogue");
+            ClickObj.SetActive(false);
+            //add progress
+            DataManager.self.AddProgress(25);
             LoadingScenes.self.ChangeScene(Tags.MAIN_SCENE);
         }
         else if (storyLines[sentenceID][0] == '#')
@@ -71,7 +88,7 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
         }
         else if (storyLines[sentenceID][0] == '@')
         { //set character portrait
-            
+
             // Debug.Log(storyLines[sentenceID]);
             ChangePortrait();
             sentenceID++;
@@ -156,7 +173,8 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
             PortraitInfoDict[character_tag].positionID = pos;
             Portraits[pos].GetComponent<PotraitCtrl>().LoadPortraits(character_tag);
         }
-        else{ //hide portrait
+        else
+        { //hide portrait
             Portraits[pos].SetActive(false);
         }
     }
@@ -179,8 +197,8 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
         { //if there is a speaker and name is not given
             Name = PortraitInfoDict[speaker_tag].Name; //use the name recorded in dict
         }
-
-        NameText.text = "【" + Name + "】";
+        
+        NameText.text = Name == "" ? Name : "【" + Name + "】";
 
     }
 
