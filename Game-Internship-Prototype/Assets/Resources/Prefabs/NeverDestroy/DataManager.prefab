@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649e0bfb6447d45478a5671be72b796e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TotalChapters: 1
   data:
-    Name: "\u83EF\u5B89"
-    Money: 100
+    Name: "\u4E3B\u89D2"
+    Money: 0
     Chapter: 0
-    Progress: 75
+    Progress: 0
+    EndGame: 0

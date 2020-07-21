@@ -1,0 +1,11 @@
+2
+CharacterSample01,張牧之
+CharacterSample02,師爺
+#bg_sample01
+$0>CharacterSample01
+$1>CharacterSample02
+@CharacterSample01>0
+@CharacterSample02>0
+CharacterSample02::這是第一章
+@CharacterSample01>1
+CharacterSample01::的第二節

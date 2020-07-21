@@ -13,6 +13,7 @@ public class PlayerCtrl : MonoBehaviour
     public Sprite[] sprites;
     private Vector3 OriginalPosition;
     private float Speed = 0.2f;
+    public float HitSpriteCD = 0.3f;
     public GameObject TargetCustomer;
 
     private void Start() {
@@ -29,9 +30,10 @@ public class PlayerCtrl : MonoBehaviour
 
     public void Attack(){
         PlayerSprite.sprite = sprites[1];
-        Invoke("AttackEnd", 0.5f);
+        Invoke("AttackEnd", HitSpriteCD);
         // StartCoroutine(CustomerCtrl.self.Fall());
-        StartCoroutine(TargetCustomer.GetComponent<CustomerCtrl>().Fall());
+        // StartCoroutine(TargetCustomer.GetComponent<CustomerCtrl>().Fall());
+        TargetCustomer.SendMessage("Hit");
     }
 
     void AttackEnd(){

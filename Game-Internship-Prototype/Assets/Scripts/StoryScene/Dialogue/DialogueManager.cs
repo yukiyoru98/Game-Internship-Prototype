@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
 
     bool ReadStoryFile()
     {
-        storyFile = Resources.Load<TextAsset>(Tags.STORY_FILE_PREFIX + DataManager.self.data.Chapter.ToString());
+        storyFile = Resources.Load<TextAsset>(Tags.STORY_FILE_PREFIX + DataManager.self.data.Chapter.ToString() + "-" + DataManager.self.data.Progress.ToString());
         if (!storyFile)
         {
             Debug.LogError("Failed to load story");
@@ -70,8 +70,7 @@ public class DialogueManager : MonoBehaviour //StoryScene/DialogueUI
         { //end dialogue
             Debug.Log("End Dialogue");
             ClickObj.SetActive(false);
-            //add progress
-            DataManager.self.AddProgress(25);
+            DataManager.self.AddProgress(1);
             LoadingScenes.self.ChangeScene(Tags.MAIN_SCENE);
         }
         else if (storyLines[sentenceID][0] == '#')

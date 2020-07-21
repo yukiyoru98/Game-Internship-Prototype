@@ -30,14 +30,14 @@ public class TopBarCtrl : MonoBehaviour
 
     private void OnEnable() {
         DataManager.OnSetMoneyEvent += SetMoney;
-        DataManager.OnSetProgressEvent += SetProgress;
-        DataManager.OnSetChapterEvent += SetChapter;
+        // DataManager.OnSetProgressEvent += SetProgress;
+        // DataManager.OnSetChapterEvent += SetChapter;
     }
 
     private void OnDisable() {
         DataManager.OnSetMoneyEvent -= SetMoney;
-        DataManager.OnSetProgressEvent -= SetProgress;
-        DataManager.OnSetChapterEvent -= SetChapter;
+        // DataManager.OnSetProgressEvent -= SetProgress;
+        // DataManager.OnSetChapterEvent -= SetChapter;
     }
     
     private void Start()
@@ -55,7 +55,7 @@ public class TopBarCtrl : MonoBehaviour
     public void SetProgress()
     {
         Debug.Log("Progress UI updated");
-        int value = DataManager.self.data.Progress;
+        int value = DataManager.self.data.Progress * 25;
         ProgressText.text = value.ToString() + ProgressTextSuffix;
         ProgressBar.value = value;
     }

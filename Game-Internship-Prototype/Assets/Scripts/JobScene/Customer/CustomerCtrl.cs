@@ -96,20 +96,38 @@ public class CustomerCtrl : MonoBehaviour
 
     }
 
-    public IEnumerator Fall()
+    public void Hit()
     {
         CustomerSprite.sprite = sprites[1];
-        yield return new WaitForSeconds(0.3f);
-        isHit = true; //isHit = hit = true
-        CustomerSprite.sprite = sprites[2];
-
-        // yield return new WaitForSeconds(WakeUpCD);
-        // isHit = false;
-        // CanMove = true;
-        // CustomerSprite.sprite = sprites[0];
-        Invoke("WakeUp", WakeUpCD);
+        GetComponent<BoxCollider2D>().enabled = false;
+        Invoke("Fall", PlayerCtrl.self.HitSpriteCD);
 
     }
+
+    public void Fall()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+        isHit = true; //isHit = hit = true
+        CustomerSprite.sprite = sprites[2];
+        Invoke("WakeUp", WakeUpCD);
+    }
+
+    // public IEnumerator Fall()
+    // {
+    //     CustomerSprite.sprite = sprites[1];
+    //     GetComponent<BoxCollider2D>().enabled = false;
+    //     yield return new WaitForSeconds(1f);
+    //     GetComponent<BoxCollider2D>().enabled = true;
+    //     isHit = true; //isHit = hit = true
+    //     CustomerSprite.sprite = sprites[2];
+
+    //     // yield return new WaitForSeconds(WakeUpCD);
+    //     // isHit = false;
+    //     // CanMove = true;
+    //     // CustomerSprite.sprite = sprites[0];
+    //     Invoke("WakeUp", WakeUpCD);
+
+    // }
 
     void WakeUp()
     {
